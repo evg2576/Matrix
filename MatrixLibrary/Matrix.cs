@@ -167,36 +167,42 @@ namespace MatrixLibrary
         {
             //TODO: переопределить операцию Equals
             // if null -> false, wrong type -> exception
-
-            if (this._columns != other._columns && this._rows != other._rows)   
+            try
             {
-                throw new MatrixException();
-            }
-
-            if (!(other is Matrix))
-            {
-                throw new NotSupportedException();
-            }
-
-            if (other is null)
-            {
-                return false;
-            }
-
-            for (int i = 0; i < other._rows; i++)
-            {
-                for (int j = 0; j < other._columns; j++)
+                if (other is null)
                 {
-                    if (_array[i, j] != other.Array[i, j])
+                    return false;
+                }
+                
+                if (!(other is Matrix))
+                {
+                    throw new NotSupportedException();
+                }
+
+                if (this._columns != other._columns && this._rows != other._rows)   
+                {
+                    throw new MatrixException();
+                }
+                
+                for (int i = 0; i < other._rows; i++)
+                {
+                    for (int j = 0; j < other._columns; j++)
                     {
-                        return false;
+                        if (_array[i, j] != other.Array[i, j])
+                        {
+                            return false;
+                        }
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
 
             return true;
         }
-
+        
         public double[,] ToArray()
         {
             var deepcopy = new double[this._rows, this._columns];
