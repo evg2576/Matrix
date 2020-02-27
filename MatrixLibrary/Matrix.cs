@@ -26,11 +26,11 @@ namespace MatrixLibrary
         private int _rows;
         private int _columns;
 
-        public Matrix(int rows, int columns, double[,] array)
+        public Matrix(int rows, int columns)
         {
             this._rows = rows;
             this._columns = columns;
-            this._array = array;
+            this._array = new double[_rows,_columns];
         }
         
         public Matrix(double[,] array)
@@ -71,7 +71,7 @@ namespace MatrixLibrary
         
         public object Clone()
         {
-            Matrix deepCopy = new Matrix(this._rows, this._columns, this._array);
+            Matrix deepCopy = new Matrix(this._array);
 
             return deepCopy;
         }
@@ -82,7 +82,7 @@ namespace MatrixLibrary
 
             try
             {
-                Matrix result = new Matrix(first.Rows, first.Columns, new double[first.Rows, first.Columns]);
+                Matrix result = new Matrix(first.Rows, first.Columns);
                 for (int i = 0; i < first.Rows; i++)
                 {
                     for (int j = 0; j < first.Columns; j++)
@@ -100,12 +100,6 @@ namespace MatrixLibrary
 
             #endregion
         }
-
-        //Надо ли?
-        public static Matrix Sum(Matrix first, Matrix second)
-        {
-            return first + second;
-        }
         
         public static Matrix operator -(Matrix first, Matrix second)
         {
@@ -113,7 +107,7 @@ namespace MatrixLibrary
 
             try
             {
-                Matrix result = new Matrix(first.Rows, first.Columns, new double[first.Rows, first.Columns]);
+                Matrix result = new Matrix(first.Rows, first.Columns);
                 for (int i = 0; i < first.Rows; i++)
                 {
                     for (int j = 0; j < first.Columns; j++)
@@ -138,7 +132,7 @@ namespace MatrixLibrary
 
             try
             {
-                Matrix result = new Matrix(first.Rows, second.Columns, new double[first.Rows, first.Columns]);
+                Matrix result = new Matrix(first.Rows, second.Columns);
                 for (int i = 0; i < first.Rows; i++)
                 {
                     for (int j = 0; j < second.Columns; j++)
@@ -162,7 +156,22 @@ namespace MatrixLibrary
 
             #endregion
         }
+        
+        public static Matrix Sum(Matrix first, Matrix second)
+        {
+            return first + second;
+        }
 
+        public static Matrix Minus(Matrix first, Matrix second)
+        {
+            return first - second;
+        }
+        
+        public static Matrix Multiply(Matrix first, Matrix second)
+        {
+            return first * second;
+        }
+        
         public bool Equals(Matrix other)
         {
             //TODO: переопределить операцию Equals
