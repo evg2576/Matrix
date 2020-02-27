@@ -2,12 +2,16 @@
 
 namespace MatrixLibrary
 {
-    public class MatrixDimensionExeption : Exception
+    public class MatrixException : Exception
     {
         //TODO: создать исключение
-        public MatrixDimensionExeption(string message) : base(message)
+
+        public MatrixException() : base()
         {
-            //найс у меня исключение было, да?
+            
+        }
+        public MatrixException(string message) : base(message)
+        {
             // в аттрибутах теста напишем чето такое 
             // [TestCase(null, ExpectedException = typeof (MatrixDimensionExeption))]
             //если исключение не пользовательское, то mission failed.

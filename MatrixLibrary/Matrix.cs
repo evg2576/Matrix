@@ -2,53 +2,62 @@
 
 namespace MatrixLibrary
 {
-    [Serializable]
-    public struct Matrix : ICloneable
+    public class Matrix : ICloneable, IEquatable<Matrix>
     {
-        public readonly int Rows;
-        public readonly int Columns;
-        private double[,] array;
-        
+        public int Rows
+        {
+            get => _rows;
+            set => _rows = value;
+        }
+
+        public int Columns
+        {
+            get => _columns;
+            set => _columns = value;
+        }
+
+        public double[,] Array
+        {
+            get => _array;
+            set => _array = value;
+        }
+
+        private double[,] _array;
+        private int _rows;
+        private int _columns;
+
         public Matrix(int rows, int columns, double[,] array)
         {
-            this.Rows = rows;
-            this.Columns = columns;
-            this.array = array;
+            this._rows = rows;
+            this._columns = columns;
+            this._array = array;
         }
-
-        public object Clone()
+        
+        public Matrix(double[,] array)
         {
-            //TODO: Реализовать интерфейс
-            
-            #region CompletedTask
-            double[,] temparray = new double[this.Rows, this.Columns];
-            temparray = (double[,])array.Clone();
-
-            return new Matrix(this.Rows, this.Columns, temparray);
-            #endregion
+            this._array = array;
+            this._rows = _array.GetLength(0);
+            this._columns = _array.GetLength(1);
         }
-
         public double this[int index1, int index2]
         {
-            //TODO: создать индексатор
-            
             #region CompletedTask
             get
             {
                 try
                 {
-                    return array[index1, index2];
+                    return _array[index1, index2];
                 }
                 catch
                 {
                     throw new IndexOutOfRangeException("Index is out of range.");
                 }
             }
-            private set
+            set
             {
                 try
                 {
-                    array[index1, index2] = value;
+                    _array[index1, index2] = value;
                 }
                 catch
                 {
@@ -59,11 +68,16 @@ namespace MatrixLibrary
 
             #endregion
         }
+        
+        public object Clone()
+        {
+            Matrix deepCopy = new Matrix(this._rows, this._columns, this._array);
 
+            return deepCopy;
+        }
+        
         public static Matrix operator +(Matrix first, Matrix second)
         {
-            //TODO: Перегрузить оператор 
-            
             #region CompletedTask
 
             try
@@ -81,17 +95,20 @@ namespace MatrixLibrary
             }
             catch
             {
-                throw new MatrixDimensionExeption("Dimensions are different.");
+                throw new MatrixException("Dimensions are different.");
             }
 
             #endregion
         }
 
+        //Надо ли?
+        public static Matrix Sum(Matrix first, Matrix second)
+        {
+            return first + second;
+        }
+        
         public static Matrix operator -(Matrix first, Matrix second)
         {
-            //TODO: Перегрузить оператор 
-
-            
             #region CompletedTask
 
             try
@@ -109,7 +126,7 @@ namespace MatrixLibrary
             }
             catch
             {
-                throw new MatrixDimensionExeption("Dimensions are different.");
+                throw new MatrixException("Dimensions are different.");
             }
 
             #endregion
@@ -117,8 +134,6 @@ namespace MatrixLibrary
 
         public static Matrix operator *(Matrix first, Matrix second)
         {
-            //TODO: Перегрузить оператор 
-
             #region CompletedTask
 
             try
@@ -142,33 +157,59 @@ namespace MatrixLibrary
             }
             catch
             {
-                throw new MatrixDimensionExeption("Dimensions are different.");
+                throw new MatrixException("Dimensions are different.");
             }
 
             #endregion
         }
 
-        public override bool Equals(Object obj)
+        public bool Equals(Matrix other)
         {
             //TODO: переопределить операцию Equals
+            // if null -> false, wrong type -> exception
 
-            #region CompletedTask
+            if (this._columns != other._columns && this._rows != other._rows)   
+            {
+                throw new MatrixException();
+            }
 
-            if ((obj == null) || !this.GetType().Equals(obj.GetType())) return false;
+            if (!(other is Matrix))
+            {
+                throw new NotSupportedException();
+            }
 
-            Matrix matrix = (Matrix)obj;
+            if (other is null)
+            {
+                return false;
+            }
 
-            for (int i = 0; i < matrix.Rows; i++)
-
-            for (int j = 0; j < matrix.Columns; j++)
-
-                if (matrix[i, j] != this[i, j])
-                    return false;
+            for (int i = 0; i < other._rows; i++)
+            {
+                for (int j = 0; j < other._columns; j++)
+                {
+                    if (_array[i, j] != other.Array[i, j])
+                    {
+                        return false;
+                    }
+                }
+            }
 
             return true;
+        }
 
-            #endregion
+        public double[,] ToArray()
+        {
+            var deepcopy = new double[this._rows, this._columns];
+
+            for (int i = 0; i < this._rows; i++)
+            {
+                for (int j = 0; j < this._columns; j++)
+                {
+                    deepcopy[i, j] = this._array[i, j];
+                }
+            }
             
+            return deepcopy;
         }
     }
 }
