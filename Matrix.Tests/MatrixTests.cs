@@ -10,9 +10,14 @@ namespace Matrix.Tests
         }
 
         [Test]
-        public void Test1()
+        public void PassTest()
         {
             Assert.Pass();
+        }
+
+        public void FailedTest()
+        {
+            Assert.Fail();
         }
     }
 }
