@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace MatrixTests
+namespace Matrix.Tests
 {
     public class Tests
     {
