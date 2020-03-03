@@ -42,7 +42,7 @@ namespace MatrixLibrary
             throw new NotImplementedException();
         }
 
-        public bool Equals(Matrix matrix)
+        public bool Equals(Matrix other)
         {
             throw new NotImplementedException();
         }
