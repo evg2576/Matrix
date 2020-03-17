@@ -21,15 +21,7 @@ namespace MatrixLib
         {
             get => throw new NotImplementedException();
         }
-
-        /// <summary>
-        /// Gets an array of floating-point values that represents the elements of this Matrix.
-        /// </summary>
-        public double[,] Array
-        {
-            get => throw new NotImplementedException();
-        }
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="Matrix"/> class.
         /// </summary>
@@ -59,8 +51,14 @@ namespace MatrixLib
         /// <exception cref="IndexOutOfRangeException"></exception>
         public double this[int row, int column]
         {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
         /// <summary>
@@ -119,7 +117,8 @@ namespace MatrixLib
         /// <exception cref="MatrixException"></exception>
         public Matrix Add(Matrix matrix)
         {
-            throw new NotImplementedException();
+            if (matrix == null) throw new ArgumentNullException(nameof(matrix));
+            return this + matrix;
         }
 
         /// <summary>
@@ -152,6 +151,15 @@ namespace MatrixLib
         /// <exception cref="InvalidCastException">Thrown when object has wrong type.</exception>
         /// <exception cref="MatrixException">Thrown when matrices are incomparable.</exception>
         public override bool Equals(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Gets an array of floating-point values that represents the elements of this Matrix.
+        /// </summary>
+        /// <returns>2D array that represents the elements of this Matrix.</returns>
+        public double[,] ToArray()
         {
             throw new NotImplementedException();
         }
