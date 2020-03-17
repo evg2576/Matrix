@@ -51,14 +51,8 @@ namespace MatrixLib
         /// <exception cref="IndexOutOfRangeException"></exception>
         public double this[int row, int column]
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
         }
 
         /// <summary>
