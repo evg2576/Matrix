@@ -114,8 +114,7 @@ namespace MatrixLib
         /// <exception cref="MatrixException"></exception>
         public Matrix Add(Matrix matrix)
         {
-            if (matrix == null) throw new ArgumentNullException(nameof(matrix));
-            return this + matrix;
+            throw new NotImplementedException();
         }
 
         /// <summary>
