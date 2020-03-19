@@ -147,6 +147,11 @@ namespace MatrixLib
         {
             throw new NotImplementedException();
         }
+        
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Gets an array of floating-point values that represents the elements of this Matrix.
