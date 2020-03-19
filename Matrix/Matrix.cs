@@ -1,8 +1,11 @@
-﻿using System;
+using System;
 
 namespace MatrixLib
 {
-    //TODO: Create custom exception "MatrixException"
+    // TODO: Create custom exception "MatrixException"
+    public class MatrixException
+    {
+    }
     
     public class Matrix : ICloneable
     {
