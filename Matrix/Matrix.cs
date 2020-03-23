@@ -1,6 +1,6 @@
 using System;
 
-namespace MatrixLib
+namespace MatrixLibrary
 {
     // TODO: Create custom exception "MatrixException"
     
