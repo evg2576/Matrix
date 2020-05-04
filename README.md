@@ -1,1 +1,1 @@
-This code was written 6 month ago, do not blame me. 
+Why are we still here? Just to suffer?
