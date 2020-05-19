@@ -23,6 +23,14 @@ namespace MatrixLibrary
         }
         
         /// <summary>
+        /// Gets an array of floating-point values that represents the elements of this Matrix.
+        /// </summary>
+        public double[,] Array
+        {
+            get => throw new NotImplementedException();
+        }
+        
+        /// <summary>
         /// Initializes a new instance of the <see cref="Matrix"/> class.
         /// </summary>
         /// <param name="rows"></param>
@@ -147,19 +155,7 @@ namespace MatrixLibrary
         {
             throw new NotImplementedException();
         }
-        
-        public override int GetHashCode()
-        {
-            throw new NotImplementedException();
-        }
 
-        /// <summary>
-        /// Gets an array of floating-point values that represents the elements of this Matrix.
-        /// </summary>
-        /// <returns>2D array that represents the elements of this Matrix.</returns>
-        public double[,] ToArray()
-        {
-            throw new NotImplementedException();
-        }
+        public override int GetHashCode() => base.GetHashCode();
     }
 }

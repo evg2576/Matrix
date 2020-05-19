@@ -1,8 +1,6 @@
-using System;
-using MatrixLibrary;
 using NUnit.Framework;
 
-namespace MatrixLowTests
+namespace MatrixTests
 {
     [TestFixture]
     public class Tests
