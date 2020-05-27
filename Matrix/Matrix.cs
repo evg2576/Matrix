@@ -56,7 +56,7 @@ namespace MatrixLibrary
         /// </summary>
         /// <param name="row"></param>
         /// <param name="column"></param>
-        /// <exception cref="IndexOutOfRangeException"></exception>
+        /// <exception cref="ArgumentException"></exception>
         public double this[int row, int column]
         {
             get => throw new NotImplementedException();
