@@ -201,6 +201,7 @@ namespace MatrixTests
 
         #region Low
 
+        [TestCaseSource(nameof(ArraysCreateMatrix))]
         public void CreateMatrix_WithArray_PublicProperties_ReturnsCorrectValues(double[,] expectedArray)
         {
             var expectedRows = expectedArray.GetLength(0);
