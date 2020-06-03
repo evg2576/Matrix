@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace MatrixTests
 {
-    [TestFixture, Timeout(1000)]
+    [TestFixture]
     [DefaultFloatingPointTolerance(0.001)]
     public class Tests
     {
