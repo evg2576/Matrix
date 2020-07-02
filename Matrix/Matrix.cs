@@ -149,8 +149,6 @@ namespace MatrixLibrary
         /// </summary>
         /// <param name="obj">Object to compare with. (Can be null)</param>
         /// <returns>True if matrices are equal, false if are not equal.</returns>
-        /// <exception cref="InvalidCastException">Thrown when object has wrong type.</exception>
-        /// <exception cref="MatrixException">Thrown when matrices are incomparable.</exception>
         public override bool Equals(object obj)
         {
             throw new NotImplementedException();
